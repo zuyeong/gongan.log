@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;900&family=Noto+Serif+KR:wght@200;300;500;600;700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>news2</title>
+  <link rel="shortcut icon" type="image/x-icon" href="https://i.postimg.cc/sXSk0Cr9/2022-12-11-085632-removebg-preview.png">
+
+  <style>
+    body{
+
+
+           -ms-overflow-style: none;
+ }
+ 
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+  * {
+    font-family: 'Noto Serif KR', serif;
+        margin: 0;
+        padding: 0;
+        font-weight: 100;
+
+    }
+
+    .home {
+      margin-top: 52px;
+      display: flex;
+            justify-content: space-between;
+    }
+
+    .logo {
+      margin-left: 52px;
+      position: fixed;
+      overflow: auto;
+    }
+
+
+    .main-page {
+      
+           height: 100vh;
+         display:flex;
+           flex-direction: column;
+        }
+
+
+        .menu {
+           overflow: hidden;
+           position: absolute;
+           top: 0;
+           right: 0;
+           height: 100%;
+           max-width: 0;
+           transition: 0.5s ease;
+           z-index: 2;
+           background-color: white;
+           position: fixed;
+      overflow: auto;
+        }
+
+        .dark {
+           position: absolute;
+           top: 0;
+           right: 0;
+           height: 100%;
+           max-width: 0;
+           z-index: 1;
+           position: fixed;
+      overflow: auto;
+           
+        }
+
+        .burger-icon {
+          cursor: pointer;
+          display: inline-block;
+          position: absolute;
+          z-index: 3;
+          top: 0;
+          right: 0;
+          /*user-select: none; */ 
+          width: auto;
+          margin: 52px;
+          padding: 24px 0;
+          position: fixed;
+      overflow: auto;
+        }
+
+        .burger-icon .burger-sticks {
+          background: #000;
+          display: block;
+          height: 1.4px;
+          position: relative;
+          transition: background .2s ease-out;
+          width: 64px;
+        }
+
+        .burger-icon .burger-sticks:before,
+        .burger-icon .burger-sticks:after {
+          background: #000;
+          height: 1.4px;
+          content: '';
+          display: block;
+          height: 100%;
+          position: absolute;
+          transition: all .2s ease-out;
+          width: 100%;
+        }
+
+        .burger-icon .burger-sticks:before {
+          top: 24px;
+        }
+
+        .burger-icon .burger-sticks:after {
+          top: -24px;
+        }
+
+        .burger-check {
+          display: none;
+        }
+
+        .burger-check:checked~.menu {
+          max-width: 640px;
+          overflow: visible;
+        }
+
+        .burger-check:checked~.dark {
+          max-width: 100vw;
+          background-color: rgb(0, 0, 0, 0.3);
+        }
+
+
+        .burger-check:checked~.burger-icon .burger-sticks {
+          background: transparent;
+        }
+
+        .burger-check:checked~.burger-icon .burger-sticks:before {
+          transform: rotate(-45deg);
+        }
+
+        .burger-check:checked~.burger-icon .burger-sticks:after {
+          transform: rotate(45deg);
+        }
+
+        .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:before,
+        .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:after {
+          top: 0;
+        }
+
+        .menu-list {
+          text-decoration: none;
+
+        }
+
+        p {
+          font-weight: 100;
+          font-size: 48px;
+          color: #000;
+          margin-bottom: 40px;
+        }
+
+
+        .menu-btn {
+          margin-bottom: 40px;
+        }
+
+        p:hover {
+          font-weight: 400;
+         }
+
+         .menu-box{
+          margin-left: 72px;
+          margin-top: 236px;
+         }
+
+         footer h2{
+          font-size: 36px;
+          font-weight: 300;
+        }
+
+        
+
+        .footer-box{
+          margin-left: 52px;
+          margin-right: 52Px;
+          margin-bottom: 140px;
+        }
+
+        .footer-content {
+          margin-top: 140px;
+        }
+
+        .footA {
+          display: flex;
+          justify-content: flex-end;
+          margin-bottom: 24px;
+          
+        }
+
+        .sns {
+          font-size: 12px;
+          color: #000;
+          margin-left: 36px;
+          text-decoration: none;
+          font-family: 'Noto Sans KR';
+        }
+
+        .footC {
+          margin-top: 36px;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .copyright {
+          font-family: 'Noto Sans KR';
+          font-size: 16px;
+          font-weight: 200;
+          color: #000;
+
+        }
+
+        .pp {
+          font-family: 'Noto Sans KR';
+          font-size: 12px;
+          color: #595959;
+          text-decoration: none;
+        }
+
+        .news-box {
+          margin-left: 218px;
+          margin-top: 148px;
+          margin-right: 218px;
+         }
+
+         .title h1 {
+          font-size: 36px;
+          font-weight: 500;
+         }
+
+         .container {
+          margin-top: 62px;
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          gap: 0px 20px;
+         }
+
+         .news-title {
+          grid-column-start: 2;
+          grid-column-end: 5;
+         }
+
+         .news-title h1{
+          font-size: 36px;
+          font-weight: 500;
+          text-align: right;
+         }
+
+         .news-content{
+          grid-column-start: 5;
+          grid-column-end: 13;
+          margin-bottom: 400px;
+         }
+
+        
+
+         .line {
+          border: 0.5px solid #595959;;
+          width: 0.1px;
+          height: 192px;
+          margin-top: 80px;
+          margin-bottom: 24px;
+         }
+
+         .news-content h1{
+           font-size: 12px;
+           font-weight: 400;
+           margin-bottom: 12px;
+         }
+
+         .news-content h2{
+           font-size: 20px;
+           font-weight: 400;
+           margin-bottom: 8px;
+         }
+
+         .news-content h3{
+           font-size: 12px;
+           font-weight: 400;
+           margin-bottom: 40px;
+         }
+
+         .news-content h4{
+          text-align: justify;
+           font-size: 12px;
+           font-weight: 400;
+           line-height: 240%;
+           margin-bottom: 40px;
+           margin-top: 40px;
+
+         }
+
+         .news-img{
+
+          display: grid;
+          grid-template-columns: repeat(8, 1fr);
+          gap: 0px 20px;
+         }
+
+          .news-img1{
+          display: block;
+          grid-column-start: 1;
+          grid-column-end: 6;
+         }
+
+         .news-img2{
+
+          grid-column-start: 6;
+          grid-column-end: 10;
+         }
+
+         .news-img img {
+          height: 500px;
+         }
+
+
+
+
+
+         
+
+        .another {
+          margin-bottom: 312px;
+        }
+
+        .list-container {
+          margin-top: 40px;
+        }
+
+        .list-box h1 {
+          font-size: 12px;
+          font-weight: 300;
+          margin-bottom: 8px;
+          color: #000;
+
+        }
+
+        .list-box h2 {
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 160%;
+          color: #000;
+
+        }
+
+        .list-container {
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .icon {
+          grid-row-start: 3;
+          grid-row-end: 4;
+          grid-column-start: 1;
+          grid-column-end: 2;
+        }
+
+        .list-box {
+          grid-row-start: 1;
+          grid-row-end: 4;
+          grid-column-start: 7;
+          grid-column-end: 13;
+          
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .list-text {
+          display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+        }
+
+        .list-text {
+          text-decoration: none;
+          border: 1px solid rgb(0, 0, 0, 0);
+          box-sizing: border-box;
+        }
+
+        .list-text:hover {
+         border: 1px solid rgb(0, 0, 0, 1);
+         box-sizing: border-box;
+        }
+
+        .nav {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .nav h1{
+          font-size: 20px;
+        }
+
+        .nav-line {
+          border: 0.5px solid #595959;;
+          width: 62px;
+          height: 0.1px;
+          margin-left: 8px;
+          margin-right: 8px;
+         }
+        
+  </style>
+</head>
+
+<body>
+  <div class="main-page">
+      <div class="home">
+            <a class="logo" href="index.html"><img src="https://i.postimg.cc/Tw8FJq1r/image.png" alt="logo" width="64px"></a>
+
+         <input class="burger-check" type="checkbox" id="burger-check" /><label class="burger-icon" for="burger-check"><span class="burger-sticks"></span></label>
+
+         <div class="dark">
+          <div style="width: 100vw;"></div>
+         </div> 
+
+        <div class="menu">
+            <div style="width: 640px;">
+              <div class="menu-box">
+                <a class="menu-list" href="space.html"><p>Space</p></a>
+                <a class="menu-list" href="news.html"><p>News</p></a>
+                <a class="menu-list" href="#"><p>About</p></a>
+                <a class="menu-list" href="#"><p>Contact</p></a>
+              </div>
+            </div>
+        </div> 
+        </div>
+
+        <div class="nav">
+          <h1>Log</h1>
+          <div class="nav-line"></div>
+          <h1>News</h1>
+        </div>
+
+        <div class="news-box">
+
+          <div class="container">
+
+          <div class="news-title"><h1>작은 방주</h1></div>
+          <div class="line"></div>
+          <div class="news-content">
+            <h1>2022.11.14</h1>
+            <h2>방향 상실의 시대:〈MMCA 시리즈 2022: 최우람‐작은 방주〉</h2>
+            <h3>「SPACE(공간)」2022년 11월호 (통권 660호)</h3>
+            <img src="https://i.postimg.cc/XJPGtZyR/377139482635b397e5b3d1.jpg" width="100%">
+            <h4>기후변화와 사회 정치경제적 위기로 인해 불안감이 피어 오르는 시대, 인류는 어디를 향해가고 있는가? 국립현대미술관 서울관에서 열리는 〈MMCA 현대차 시리즈 2022: 최우람‐작은 방주〉가 내포하고 있는 질문이다. ‘원탁’(2022)은 머리가 없는 18개의 지푸라기 몸체가 검은색 원탁을 받치고 있고, 하나의 둥근 머리가 테이블 위에서 여기저기로 굴러다니는 작품이다. 각 몸체는 머리를 차지하려 고개를 들지만, 그 순간 원탁의 내리막을 만들기에, 둥근 머리는 저 멀리로 굴러가버린다. 이처럼 몸체가 위, 아래로 움직이는 행위는 이중적이다. ‘작은 방주’(2022) 또한 방향감각을 상실하게 만든다. 작은 방주는 세로축 12m, 높이 2.1m를 가진 선체로, 직사각형 모양을 유지하다 흰 벽처럼 접어둔 노를 높이 들어올리며 항해를 시작한다. 노의 장대한 군무를 통해 항해의 추진력과 웅장한 위엄을 드러내는 작은 방주는 선체 위와 주변에 위치한 다양한 조각설치물과 어우러진다. 선체 위에 앉아 있는 ‘두 선장’(2022)은 서로 등을 맞대고 반대의 방향을 바라보며, 모두 전진하자고 외치는 듯 앞을 향해 엄지손가락을 치켜 들고 있다. 어느 쪽이 앞이고 뒤인지, 어디로 가야 전진이고 후진인지 알 수 없도록 의도한 부분이다. 두 선장 중 한 선장은 ‘출구’(2022)를 보도록 구성됐다. 출구는 끊임없이 열리는 문을 담아낸 단채널 영상으로, 어디로 들어온지 모른 채 끊임없이 나가고만 있는 듯한 감각을 일으킨다. 반대편의 선장 앞에는 ‘무한 공간’(2022)이 위치한다. 무한 공간은 거울 두 개를 마주보도록 설치해 끝이 존재하지 않는 다른 차원의 공간을 만들어낸다. </h4>
+            <img src="https://i.postimg.cc/YSxbLLnK/2022-12-11-055111.png" width="100%">
+            <h4>한편, 이번 전시에서는 최우람의 ‘설계 드로잉’(2021~2022)도 최초로 공개됐다. 건축 작품 이전에 창문의 두께 하나하나까지 치수화하는 정교한 실시도면이 있는 것처럼, 그의 드로잉은 예술 작품 이전에 작업자의 치밀함이 있었음을 상기시킨다. 최우람은 ‘우리가 어디를 향해 가는지’에 대한 답을 내리기보다, 질문 자체를 지각하도록 돕는다. ‘어딘가’로 향하고 있다는 인식, 그 인식이 우선하여야 방향을 설정하고, 비로소 스스로에게 방향키를 쥐어줄 수 있을 것이다. 전시는 2023년 2월 26일까지 이어진다. (박지윤 기자)</h4>
+            <div class="news-img">
+              <div class="news-img1">
+                <img src="https://i.postimg.cc/hGM1tWvK/2022-12-11-055145.png" width="100%">
+              </div>
+              <div class="news-img2">
+                <img src="https://i.postimg.cc/2j1MMT91/img3.jpg" width="100%">
+              </div>
+            </div>
+
+
+          </div>
+
+
+          </div>
+          
+
+            
+
+          <div class="another">
+            <div class="title" style="font-weight: 700;"><h1>Another News</h1></div>
+
+            <div class="list-container">
+
+              
+              <a class="icon" href="news.html"><img src="https://i.postimg.cc/PqqvyjGw/icon.png" alt="icon" width="100%"></a>
+
+              <div class="list-box">
+                <div class="list">
+                  <a class="list-text" href="#">
+                   <h1>2022.11.17</h1>
+                   <h2>권력이 탐한 공간</h2>
+                   </a>
+                </div>
+                <div class="list">
+                  <a class="list-text" href="#">
+                  <h1>2022.10.28</h1>
+                  <h2>구름산책자</h2>
+                  </a>
+                </div>
+                <div class="list">
+                  <a class="list-text" href="#">
+                  <h1>2022.11.04</h1>
+                  <h2>공간국제학생<br>건축상 수상</h2>
+                  </a>
+                </div>
+                <div class="list">
+                  <a class="list-text" href="#">
+                  <h1>2022.11.08</h1>
+                  <h2>2022 건축<br>문화제 개최</h2>
+                  </a>
+                </div>
+                <div class="list">
+                  <a class="list-text" href="#">
+                  <h1>2022.09.23</h1>
+                  <h2>뮤지엄 건축 기행</h2>
+                  </a>
+                </div>
+                <div class="list">
+                  <a class="list-text" href="#">
+                  <h1>2022.09.22</h1>
+                  <h2>평면의 정석</h2>
+                  </a>
+                </div>
+             </div>
+
+            </div>
+
+
+          </div>
+
+        
+
+        
+      </div>
+
+
+        <footer>
+           <div class="footer-box">
+            <h2>공간의 일부분을 나누다</h2>
+
+            <div class="footer-content">
+              <div class="footA">
+                <a class="sns" href="#">인스타그램</a>
+                <a class="sns" href="#">블로그</a>
+                <a class="sns" href="#">유튜브</a>
+                <a class="sns" href="#">메일</a>
+              </div>
+
+              <div class="footB">
+                <hr width = "100%"; color = "#000">
+              </div>
+
+              <div class="footC">
+                <div class="copyright">gongan.log © 2022</div>
+                <a class="pp" href="#">개인정보처리방침</a>
+              </div>
+
+
+
+            </div>
+
+
+           </div>
+        </footer>
+
+        
+         
+    </div>
+</body>
+</html>

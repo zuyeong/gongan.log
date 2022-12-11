@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;900&family=Noto+Serif+KR:wght@200;300;500;600;700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<title>news</title>
+  <link rel="shortcut icon" type="image/x-icon" href="https://i.postimg.cc/sXSk0Cr9/2022-12-11-085632-removebg-preview.png">
+
+	<style>
+		body{
+
+
+           -ms-overflow-style: none;
+ }
+ 
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+	* {
+		font-family: 'Noto Serif KR', serif;
+        margin: 0;
+        padding: 0;
+        font-weight: 100;
+
+    }
+
+    .home {
+			margin-top: 52px;
+			display: flex;
+            justify-content: space-between;
+		}
+
+		.logo {
+			margin-left: 52px;
+			position: fixed;
+			overflow: auto;
+		}
+
+
+		.main-page {
+			
+           height: 100vh;
+	       display:flex;
+           flex-direction: column;
+        }
+
+
+        .menu {
+           overflow: hidden;
+           position: absolute;
+           top: 0;
+           right: 0;
+           height: 100%;
+           max-width: 0;
+           transition: 0.5s ease;
+           z-index: 2;
+           background-color: white;
+           position: fixed;
+			overflow: auto;
+        }
+
+        .dark {
+           position: absolute;
+           top: 0;
+           right: 0;
+           height: 100%;
+           max-width: 0;
+           z-index: 1;
+           position: fixed;
+			overflow: auto;
+           
+        }
+
+        .burger-icon {
+          cursor: pointer;
+          display: inline-block;
+          position: absolute;
+          z-index: 3;
+          top: 0;
+          right: 0;
+          /*user-select: none; */ 
+          width: auto;
+          margin: 52px;
+          padding: 24px 0;
+          position: fixed;
+			overflow: auto;
+        }
+
+        .burger-icon .burger-sticks {
+          background: #000;
+          display: block;
+          height: 1.4px;
+          position: relative;
+          transition: background .2s ease-out;
+          width: 64px;
+        }
+
+        .burger-icon .burger-sticks:before,
+        .burger-icon .burger-sticks:after {
+          background: #000;
+          height: 1.4px;
+          content: '';
+          display: block;
+          height: 100%;
+          position: absolute;
+          transition: all .2s ease-out;
+          width: 100%;
+        }
+
+        .burger-icon .burger-sticks:before {
+          top: 24px;
+        }
+
+        .burger-icon .burger-sticks:after {
+          top: -24px;
+        }
+
+        .burger-check {
+          display: none;
+        }
+
+        .burger-check:checked~.menu {
+          max-width: 640px;
+          overflow: visible;
+        }
+
+        .burger-check:checked~.dark {
+          max-width: 100vw;
+          background-color: rgb(0, 0, 0, 0.3);
+        }
+
+
+        .burger-check:checked~.burger-icon .burger-sticks {
+          background: transparent;
+        }
+
+        .burger-check:checked~.burger-icon .burger-sticks:before {
+          transform: rotate(-45deg);
+        }
+
+        .burger-check:checked~.burger-icon .burger-sticks:after {
+          transform: rotate(45deg);
+        }
+
+        .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:before,
+        .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:after {
+          top: 0;
+        }
+
+        .menu-list {
+        	text-decoration: none;
+
+        }
+
+        p {
+          font-weight: 100;
+          font-size: 48px;
+          color: #000;
+          margin-bottom: 40px;
+        }
+
+
+        .menu-btn {
+          margin-bottom: 40px;
+        }
+
+        p:hover {
+          font-weight: 400;
+         }
+
+         .menu-box{
+         	margin-left: 72px;
+         	margin-top: 236px;
+         }
+
+         .news-box {
+         	margin-left: 218px;
+         	margin-top: 148px;
+         	margin-right: 218px;
+         }
+
+         .title h1{
+         	font-weight: bold;
+         	font-size: 48px;
+         }
+
+         .container {
+         	margin-top: 88px;
+            
+        }
+
+        .news-list {
+          display: grid;
+          grid-template-rows: repeat(6, 1fr);
+          gap: 100px 0;
+        }
+
+        .list1 {
+          grid-row-start: 1;
+          grid-row-end: 2;
+
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          gap: 0 20px;
+
+        }
+
+        .list-img-right {
+          grid-column-start: 6;
+          grid-column-end: 13;
+        }
+
+        .list-img-left {
+          grid-column-start: 1;
+          grid-column-end: 8;
+        }
+
+        .list2 {
+          grid-row-start: 2;
+          grid-row-end: 3;
+
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          gap: 0 20px;
+        }
+
+        .list3{
+          grid-row-start: 3;
+          grid-row-end: 4;
+
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          gap: 0 20px;
+        }
+
+        .list4 {
+          grid-row-start: 4;
+          grid-row-end: 5;
+
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          gap: 0 20px;
+        }
+        .list5 {
+          grid-row-start: 5;
+          grid-row-end: 6;
+
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          gap: 0 20px;
+        }
+        .list6 {
+          grid-row-start: 6;
+          grid-row-end: 7;
+
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          gap: 0 20px;
+        }
+
+
+
+        .list-text1 h1 {
+          font-size: 16px;
+          font-weight: 400;
+          margin-bottom: 24px;
+          margin-top: 84px;
+          text-align: right;
+        }
+
+        .list-text1 h2 {
+          font-size: 24px;
+          font-weight: 400;
+          text-align: right;
+          margin-bottom: 80px;
+
+        }
+
+        .list-text2 h1 {
+          font-size: 16px;
+          font-weight: 400;
+          margin-bottom: 24px;
+          margin-top: 84px;
+        }
+
+        .list-text2 h2 {
+          font-size: 24px;
+          font-weight: 400;
+          margin-bottom: 80px;
+        }
+
+
+        .list-text1{
+          grid-column-start: 1;
+          grid-column-end: 6;
+          margin-right: 40px;
+        }
+
+        .list-text2 {
+          grid-column-start: 8;
+          grid-column-end: 13;
+          margin-left: 40px;
+        }
+
+        .icon2 img{
+          float:right;
+          transition: 0.5s ease;
+        }
+
+        .icon img{
+          transition: 0.5s ease;
+        }
+
+        .icon img:hover{
+          transform: scale(1.2);
+        }
+
+        .icon2 img:hover{
+          transform: scale(1.2);
+        }
+
+        
+
+ 
+
+      
+
+
+
+        
+
+
+        .more-text {
+        	font-weight: 500;
+        	font-size: 24px;
+        	color: #000;
+        	text-decoration: none;
+        }
+
+        .more {
+        	grid-column-start: 7;
+          grid-column-end: 9;
+          text-align: center;
+          margin-top: 100px;
+          margin-bottom: 320px;
+        }
+
+        .more:hover{
+          transform: scale(1.1);
+        }
+
+        footer h2{
+        	font-size: 36px;
+        	font-weight: 300;
+        }
+
+        
+
+        .footer-box{
+        	margin-left: 52px;
+        	margin-right: 52Px;
+        	margin-bottom: 140px;
+        }
+
+        .footer-content {
+        	margin-top: 140px;
+        }
+
+        .footA {
+        	display: flex;
+        	justify-content: flex-end;
+        	margin-bottom: 24px;
+        	
+        }
+
+        .sns {
+        	font-size: 12px;
+        	color: #000;
+        	margin-left: 36px;
+        	text-decoration: none;
+        	font-family: 'Noto Sans KR';
+        }
+
+        .footC {
+        	margin-top: 36px;
+        	display: flex;
+        	justify-content: space-between;
+        }
+
+        .copyright {
+        	font-family: 'Noto Sans KR';
+        	font-size: 16px;
+        	font-weight: 200;
+        	color: #000;
+
+        }
+
+        .pp {
+        	font-family: 'Noto Sans KR';
+        	font-size: 12px;
+        	color: #595959;
+        	text-decoration: none;
+        }
+
+
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="main-page">
+	    <div class="home">
+            <a class="logo" href="index.html"><img src="https://i.postimg.cc/Tw8FJq1r/image.png" alt="logo" width="64px"></a>
+
+         <input class="burger-check" type="checkbox" id="burger-check" /><label class="burger-icon" for="burger-check"><span class="burger-sticks"></span></label>
+
+         <div class="dark">
+         	<div style="width: 100vw;"></div>
+         </div> 
+
+        <div class="menu">
+            <div style="width: 640px;">
+            	<div class="menu-box">
+            	  <a class="menu-list" href="space.html"><p>Space</p></a>
+            	  <a class="menu-list" href="news.html"><p>News</p></a>
+            	  <a class="menu-list" href="#"><p>About</p></a>
+            	  <a class="menu-list" href="#"><p>Contact</p></a>
+            	</div>
+            </div>
+        </div> 
+        </div>
+
+        <div class="news-box">
+        	<div class="title"><h1>News</h1></div>
+
+        	<div class="container">
+
+            <div class="news-list">
+
+              
+
+              <div class="list1">
+                
+                <div class="list-img-left">
+                  <img src="https://i.postimg.cc/XJPGtZyR/377139482635b397e5b3d1.jpg" width="100%">
+                </div>
+                <div class="list-text2">
+                  <h1>2022.11.04</h1>
+                  <h2>작은 방주</h2>
+                  <a class="icon" href="news2.html"><img src="https://i.postimg.cc/PqqvyjGw/icon.png" alt="icon" width="10%"></a>
+                </div>
+              </div>
+
+              <div class="list2">
+                <div class="list-text1">
+                  <h1>2022.11.04</h1>
+                  <h2>구름산책자</h2>
+                  <a class="icon2" href="news2.html"><img src="https://i.postimg.cc/T1rwTbqF/icon2.png" alt="icon" width="10%"></a>
+                </div>
+                <div class="list-img-right">
+                  <img src="https://i.postimg.cc/g0fB3L8g/133499582562b00f06f0453.jpg" width="100%">
+                </div>
+                
+              </div>
+
+              <div class="list3">
+                <div class="list-img-left">
+                  <img src="https://i.postimg.cc/8cbK8y3Y/6017069663807693a05f2.jpg" width="100%">
+                </div>
+                <div class="list-text2">
+                  <h1>2022.11.04</h1>
+                  <h2>공간국제학생건축상 수상</h2>
+                  <a class="icon" href="news2.html"><img src="https://i.postimg.cc/PqqvyjGw/icon.png" alt="icon" width="10%"></a>
+                </div>
+              </div>
+
+              <div class="list4">
+                <div class="list-text1">
+                  <h1>2022.11.04</h1>
+                  <h2>2022 건축문화제 개최</h2>
+                  <a class="icon2" href="news2.html"><img src="https://i.postimg.cc/T1rwTbqF/icon2.png" alt="icon" width="10%"></a>
+                </div>
+                <div class="list-img-right">
+                  <img src="https://i.postimg.cc/SK0Wr61Y/10787832062df7beeaa8c8.jpg" width="100%">
+                </div>
+              </div>
+
+              <div class="list5">
+                <div class="list-img-left">
+                  <img src="https://i.postimg.cc/rspWmQs3/17933040566305a56b24cfe.jpg" width="100%">
+                </div><div class="list-text2">
+                  <h1>2022.11.04</h1>
+                  <h2>뮤지엄 건축 기행</h2>
+                  <a class="icon" href="news2.html"><img src="https://i.postimg.cc/PqqvyjGw/icon.png" alt="icon" width="10%"></a>
+                </div>
+              </div>
+
+              <div class="list6">
+                <div class="list-text1">
+                  <h1>2022.11.04</h1>
+                  <h2>히토 슈타이얼-데이터의 바다</h2>
+                  <a class="icon2" href="news2.html"><img src="https://i.postimg.cc/T1rwTbqF/icon2.png" alt="icon" width="10%"></a>
+                </div>
+                <div class="list-img-right">
+                  <img src="https://i.postimg.cc/LsRJ5N0D/152391577962a83b56ea61f.jpg" width="100%">
+                </div>
+              </div>
+
+
+            </div>
+
+         	   
+
+         	  
+
+         	   
+
+         	   <div class="more">
+        	     <a class="more-text" href="#">more</a>
+               </div>
+
+
+
+        	</div>
+
+              
+ 
+
+
+        </div>
+
+        <footer>
+           <div class="footer-box">
+        	  <h2>공간의 일부분을 나누다</h2>
+
+        	  <div class="footer-content">
+        	  	<div class="footA">
+        	  		<a class="sns" href="#">인스타그램</a>
+        	  		<a class="sns" href="#">블로그</a>
+        	  		<a class="sns" href="#">유튜브</a>
+        	  		<a class="sns" href="#">메일</a>
+        	  	</div>
+
+        	  	<div class="footB">
+        	  		<hr width = "100%"; color = "#000">
+        	  	</div>
+
+        	  	<div class="footC">
+        	  		<div class="copyright">gongan.log © 2022</div>
+        	  		<a class="pp" href="#">개인정보처리방침</a>
+        	  	</div>
+
+
+
+        	  </div>
+
+
+           </div>
+        </footer>
+
+        
+         
+   	</div>
+</body>
+</html>

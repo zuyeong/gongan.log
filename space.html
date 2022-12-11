@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;900&family=Noto+Serif+KR:wght@200;300;500;600;700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<title>space</title>
+  <link rel="shortcut icon" type="image/x-icon" href="https://i.postimg.cc/sXSk0Cr9/2022-12-11-085632-removebg-preview.png">
+
+	<style>
+		body{
+
+
+           -ms-overflow-style: none;
+ }
+ 
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+	* {
+		font-family: 'Noto Serif KR', serif;
+        margin: 0;
+        padding: 0;
+        font-weight: 100;
+
+    }
+
+    .home {
+			margin-top: 52px;
+			display: flex;
+            justify-content: space-between;
+		}
+
+		.logo {
+			margin-left: 52px;
+			position: fixed;
+			overflow: auto;
+		}
+
+
+		.main-page {
+			
+           height: 100vh;
+	       display:flex;
+           flex-direction: column;
+        }
+
+
+        .menu {
+           overflow: hidden;
+           position: absolute;
+           top: 0;
+           right: 0;
+           height: 100%;
+           max-width: 0;
+           transition: 0.5s ease;
+           z-index: 2;
+           background-color: white;
+           position: fixed;
+			overflow: auto;
+        }
+
+        .dark {
+           position: absolute;
+           top: 0;
+           right: 0;
+           height: 100%;
+           max-width: 0;
+           z-index: 1;
+           position: fixed;
+			overflow: auto;
+           
+        }
+
+        .burger-icon {
+          cursor: pointer;
+          display: inline-block;
+          position: absolute;
+          z-index: 3;
+          top: 0;
+          right: 0;
+          /*user-select: none; */ 
+          width: auto;
+          margin: 52px;
+          padding: 24px 0;
+          position: fixed;
+			overflow: auto;
+        }
+
+        .burger-icon .burger-sticks {
+          background: #000;
+          display: block;
+          height: 1.4px;
+          position: relative;
+          transition: background .2s ease-out;
+          width: 64px;
+        }
+
+        .burger-icon .burger-sticks:before,
+        .burger-icon .burger-sticks:after {
+          background: #000;
+          height: 1.4px;
+          content: '';
+          display: block;
+          height: 100%;
+          position: absolute;
+          transition: all .2s ease-out;
+          width: 100%;
+        }
+
+        .burger-icon .burger-sticks:before {
+          top: 24px;
+        }
+
+        .burger-icon .burger-sticks:after {
+          top: -24px;
+        }
+
+        .burger-check {
+          display: none;
+        }
+
+        .burger-check:checked~.menu {
+          max-width: 640px;
+          overflow: visible;
+        }
+
+        .burger-check:checked~.dark {
+          max-width: 100vw;
+          background-color: rgb(0, 0, 0, 0.3);
+        }
+
+
+        .burger-check:checked~.burger-icon .burger-sticks {
+          background: transparent;
+        }
+
+        .burger-check:checked~.burger-icon .burger-sticks:before {
+          transform: rotate(-45deg);
+        }
+
+        .burger-check:checked~.burger-icon .burger-sticks:after {
+          transform: rotate(45deg);
+        }
+
+        .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:before,
+        .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:after {
+          top: 0;
+        }
+
+        .menu-list {
+        	text-decoration: none;
+
+        }
+
+        p {
+          font-weight: 100;
+          font-size: 48px;
+          color: #000;
+          margin-bottom: 40px;
+        }
+
+
+        .menu-btn {
+          margin-bottom: 40px;
+        }
+
+        p:hover {
+          font-weight: 400;
+         }
+
+         .menu-box{
+         	margin-left: 72px;
+         	margin-top: 236px;
+         }
+
+         .space-box {
+         	margin-left: 218px;
+         	margin-top: 148px;
+         	margin-right: 218px;
+         }
+
+         .title h1{
+         	font-weight: bold;
+         	font-size: 48px;
+         }
+
+         .container {
+         	margin-top: 88px;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 0px 20px;
+        }
+
+        
+
+        .list-box {
+          /* background-color: red; */ 
+          grid-row-start: 1;
+          grid-row-end: 2;
+          grid-column-start: 1;
+          grid-column-end: 3;
+
+        }
+		
+		.content-box1{
+		  display: flex;
+          flex-wrap: wrap;
+          /* background-color: yellow;  */ 
+          grid-row-start: 1;
+          grid-row-end: 2;
+          grid-column-start: 3;
+          grid-column-end: 8;
+          gap: 20px 0;  
+        }
+
+        .content-box2 {
+          /* margin-top: 170px; */
+		  display: flex;
+          flex-wrap: wrap;
+          /* background-color: yellow; */
+          grid-row-start: 1;
+          grid-row-end: 2;
+          grid-column-start: 8;
+          grid-column-end: 13;
+          gap: 20px 0;  
+        }
+
+        .img-box img{
+          opacity: 1;
+          transition: opacity 0.5s ease;
+        }
+
+        .img-box:hover img{
+           opacity: 0.2;
+           
+        }
+
+        .img-box:hover h2 h2{
+           opacity: 1;
+
+        }
+
+        /* .img-box:hover {
+          border: 1px solid #000;
+        } */
+
+        .img-box:hover .content-text{
+          opacity: 1;
+        }
+
+
+
+        .img-box{
+          position: relative;
+        }
+
+        .content-text{
+          transition: opacity 0.5s ease;
+          opacity: 0;
+          position: absolute;
+          margin-left: 52px;
+          margin-top: 52px;
+          vertical-align: bottom;
+
+        }
+
+        .img-box h2 {
+          font-size: 24px;
+          font-weight: 600;
+          margin-bottom: 12px;
+
+
+        }
+
+        .img-box h3 {
+          font-size: 12px;
+          font-weight: 600;
+
+
+        }
+
+
+        
+
+
+        
+
+
+        .list-all {
+        	margin-bottom: 105px;
+        }
+
+        .list-all a{
+          font-weight: 400;
+        }
+
+        .list {
+            text-decoration: none;
+            display: block;
+            color: #000;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .list-box a:hover{
+        	font-weight: 400;
+        }
+
+
+        .more-text {
+        	font-weight: 500;
+        	font-size: 24px;
+        	color: #000;
+        	text-decoration: none;
+        }
+
+        .more {
+        	grid-column-start: 7;
+          grid-column-end: 9;
+          text-align: center;
+          margin-top: 100px;
+          margin-bottom: 320px;
+          transition: 0.5s ease;
+        }
+
+        .more:hover{
+          transform: scale(1.1);
+        }
+
+
+
+
+        footer h2{
+        	font-size: 36px;
+        	font-weight: 300;
+        }
+
+        
+
+        .footer-box{
+        	margin-left: 52px;
+        	margin-right: 52Px;
+        	margin-bottom: 140px;
+        }
+
+        .footer-content {
+        	margin-top: 140px;
+        }
+
+        .footA {
+        	display: flex;
+        	justify-content: flex-end;
+        	margin-bottom: 24px;
+        	
+        }
+
+        .sns {
+        	font-size: 12px;
+        	color: #000;
+        	margin-left: 36px;
+        	text-decoration: none;
+        	font-family: 'Noto Sans KR';
+        }
+
+        .footC {
+        	margin-top: 36px;
+        	display: flex;
+        	justify-content: space-between;
+        }
+
+        .copyright {
+        	font-family: 'Noto Sans KR';
+        	font-size: 16px;
+        	font-weight: 200;
+        	color: #000;
+
+        }
+
+        .pp {
+        	font-family: 'Noto Sans KR';
+        	font-size: 12px;
+        	color: #595959;
+        	text-decoration: none;
+        }
+
+
+
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="main-page">
+	    <div class="home">
+            <a class="logo" href="index.html"><img src="https://i.postimg.cc/Tw8FJq1r/image.png" alt="logo" width="64px"></a>
+
+         <input class="burger-check" type="checkbox" id="burger-check" /><label class="burger-icon" for="burger-check"><span class="burger-sticks"></span></label>
+
+         <div class="dark">
+         	<div style="width: 100vw;"></div>
+         </div> 
+
+        <div class="menu">
+            <div style="width: 640px;">
+            	<div class="menu-box">
+            	  <a class="menu-list" href="space.html"><p>Space</p></a>
+            	  <a class="menu-list" href="news.html"><p>News</p></a>
+            	  <a class="menu-list" href="#"><p>About</p></a>
+            	  <a class="menu-list" href="#"><p>Contact</p></a>
+            	</div>
+            </div>
+        </div> 
+        </div>
+
+        <div class="space-box">
+        	<div class="title"><h1>Space</h1></div>
+
+        	<div class="container">
+
+         	   <div class="list-box">
+
+         	   	<div class="list-all">
+         	   	    <a class="list" href="#">all categories</a>
+         	   	</div>
+
+         	   	<div class="list-sub">
+         	     	<a class="list" href="#">House</a>
+         	    	<a class="list" href="#">Business</a>
+         	    	<a class="list" href="#">Culture</a>
+         	   	</div>
+
+         	   </div>
+
+         	   <div class="content-box1">
+
+                <div class="img-box">
+                  <div class="content-text">
+                    <h2>모나무르</h2>
+                    <h3>아산 최초의 복합문화공간</h3>
+                  </div>
+         	   	<a class="content-img1" href="space2.html"><img src="https://i.postimg.cc/JhsknNZd/image.jpg" width="100%"></a>
+             	</div>
+         	   	<div class="img-box">
+                <div class="content-text">
+                    <h2>카페콤마</h2>
+                    <h3>진심이 건축이 될 때</h3>
+                  </div>
+         	   	<a class="content-img2" href="space2.html"><img src="https://ggglog.com/wp-content/uploads/2022/10/wando_gallery_4.jpg" width="100%"></a>
+         	   	</div>
+         	   	<div class="img-box">
+                <div class="content-text">
+                    <h2>바하리야</h2>
+                    <h3>건축에서 균형을 찾는 방법</h3>
+                  </div>
+         	   	<a class="content-img3" href="space2.html"><img src="https://i.postimg.cc/RCc7rTMM/mijang2-768x768-2.jpg" width="100%"></a>
+         	   	</div>
+         	   	<div class="img-box">
+                <div class="content-text">
+                    <h2>춘천예술마당 봄내극장</h2>
+                    <h3>기억을 감싸는 새로운 공간</h3>
+                  </div>
+         	   	<a class="content-img4" href="space2.html"><img src="https://i.postimg.cc/YqRy77pq/2004040898633b9ca91a93d.jpg" width="100%"></a>
+         	   	</div>
+         	   	
+
+         	   </div>
+
+         	   <div class="content-box2">
+
+                <div class="img-box">
+                  <div class="content-text">
+                    <h2>미미각(米美閣)</h2>
+                    <h3>정겨움 가득한 소담하고 올곧은 집</h3>
+                  </div>
+         	   	<a class="content-img5" href="space2.html"><img src="https://ggglog.com/wp-content/uploads/2022/05/echo_thumb-2.jpg" width="100%"></a>
+         	   	</div>
+         	   	<div class="img-box">
+                <div class="content-text">
+                    <h2>La_Phare Cafe</h2>
+                    <h3>햇살, 풍경, 그리고 라떼</h3>
+                  </div>
+         	   	<a class="content-img6" href="space2.html"><img src="https://i.postimg.cc/ncgwdkTn/La-phare-Gallery-6.jpg" width="100%"></a>
+         	   	</div>
+         	   	<div class="img-box">
+                <div class="content-text">
+                    <h2>자함헌(自含軒)</h2>
+                    <h3>자연과 함께하는 집</h3>
+                  </div>
+         	   	<a class="content-img7" href="space2.html"><img src="https://i.postimg.cc/Sx71yzc9/84dfc9cc74b856eea6ea91919e0583ed7d8795bb.jpg" width="100%"></a>
+         	   	</div>
+         	   	<div class="img-box">
+                <div class="content-text">
+                    <h2>Cinema House</h2>
+                    <h3>붉은 벽돌과 다양한 동선</h3>
+                  </div>
+         	   	<a class="content-img8" href="space2.html"><img src="https://ggglog.com/wp-content/uploads/2022/01/Manseong_768x768_hover.jpg" width="100%"></a>
+         	   	</div>
+         	   	
+
+         	   </div>
+
+         	   <div class="more">
+        	     <a class="more-text" href="#">more</a>
+               </div>
+
+        	</div>
+
+       
+ 
+
+
+        </div>
+
+        <footer>
+           <div class="footer-box">
+        	  <h2>공간의 일부분을 기록하다</h2>
+
+        	  <div class="footer-content">
+        	  	<div class="footA">
+        	  		<a class="sns" href="#">인스타그램</a>
+        	  		<a class="sns" href="#">블로그</a>
+        	  		<a class="sns" href="#">유튜브</a>
+        	  		<a class="sns" href="#">메일</a>
+        	  	</div>
+
+        	  	<div class="footB">
+        	  		<hr width = "100%"; color = "#000">
+        	  	</div>
+
+        	  	<div class="footC">
+        	  		<div class="copyright">gongan.log © 2022</div>
+        	  		<a class="pp" href="#">개인정보처리방침</a>
+        	  	</div>
+
+
+
+        	  </div>
+
+
+           </div>
+        </footer>
+
+        
+         
+   	</div>
+</body>
+</html>
